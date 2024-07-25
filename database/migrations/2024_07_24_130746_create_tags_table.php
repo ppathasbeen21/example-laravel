@@ -20,7 +20,6 @@ return new class extends Migration
         Schema::create('job_tag', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Job::class, 'job_listing_id')->constrained()->cascadeOnDelete();
-/*            todo:voltar aqui pra arrumar          */
             $table->foreignIdFor(\App\Models\Tag::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tags');
-        Schema::dropIfExists('job_tag');
+//        Schema::dropIfExists('job_tag');
     }
 };

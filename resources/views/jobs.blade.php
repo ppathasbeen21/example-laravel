@@ -4,7 +4,7 @@
     </h1>
     <ul class="row gy-2 list-unstyled">
         @foreach($jobs as $job)
-            <li class="col-md-3">
+            <li class="col-md-4">
                 <a href="/jobs/{{ $job['id'] }}" class="text-decoration-none btn btn-sm btn-outline-secondary w-100 h-100">
                     <h2 class="h6 mb-3">
                         {{ $job->employer->name }}
@@ -13,10 +13,13 @@
                         {{ $job['title'] }}
                     </h2>
                     <div class="fs-5">
-                        receives {{ $job['salary'] }} per year
+                        receives <b class="text-primary">{{ $job['salary'] }}</b> per year
                     </div>
                 </a>
             </li>
         @endforeach
     </ul>
+    <div>
+        {{ $jobs->links() }}
+    </div>
 </x-layout>

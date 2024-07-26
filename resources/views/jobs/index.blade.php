@@ -16,7 +16,7 @@
                         {{ $job['title'] }}
                     </h2>
                     <div class="fs-5">
-                        receives <b class="text-primary">{{ $job['salary'] }}</b> per year
+                        receives <b class="text-success">{{ $job['salary'] }}</b> per year
                     </div>
                 </a>
             </li>

@@ -2,6 +2,9 @@
     <h1>
         Hello from Jobs page
     </h1>
+    <a href="/jobs/create" class="btn btn-success mb-4">
+        add New Job
+    </a>
     <ul class="row gy-2 list-unstyled">
         @foreach($jobs as $job)
             <li class="col-md-4">

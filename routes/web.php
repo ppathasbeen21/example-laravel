@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 Route::get('/jobs', function () {
     return view('jobs.index', [
-        'jobs' => Job::with('employer')->cursorPaginate(7)
+        'jobs' => Job::with('employer')->latest()->paginate(12)
     ]);
 });
 
@@ -24,7 +24,14 @@ Route::get('/jobs/{id}', function ($id) {
 });
 
 Route::post('/jobs', function () {
-    dd(request()->all());
+//    dd(request()->all());
+    Job::create([
+       'title' => request('title'),
+       'salary' => request('salary'),
+       'employer_id' => 1,
+    ]);
+
+    return redirect('/jobs');
 });
 
 Route::get('/about', function () {

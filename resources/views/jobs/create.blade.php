@@ -1,10 +1,8 @@
 <x-layout>
     <div class="bg-body-secondary">
-
         <h1>
             Create Job
         </h1>
-
 
         <form method="POST" action="/jobs">
             @csrf

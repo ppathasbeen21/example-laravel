@@ -12,4 +12,8 @@
     <p>
         This job pays <b class="text-success">R$ {{ $job['salary'] }}</b> per year.
     </p>
+
+    <a href="/jobs/{{ $job->id }}/edit" class="btn btn-outline-warning mt-5">
+        Edit Job
+    </a>
 </x-layout>

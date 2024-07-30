@@ -14,6 +14,11 @@
                 </label>
                 <input type="text" class="form-control" name="title" id="title"
                        placeholder="Titulo">
+                @error('title')
+                <b class="text-danger">
+                    {{ $message }}
+                </b>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="salary" class="form-label">
@@ -21,6 +26,11 @@
                 </label>
                 <input type="text" class="form-control" name="salary" id="salary"
                        placeholder="Salario">
+                @error('salary')
+                <b class="text-danger">
+                    {{ $message }}
+                </b>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

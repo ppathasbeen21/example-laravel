@@ -10,6 +10,6 @@
     <h2 class="font-bold text-lg">{{ $job['title'] }}</h2>
 
     <p>
-        This job pays {{ $job['salary'] }} per year.
+        This job pays <b class="text-success">R$ {{ $job['salary'] }}</b> per year.
     </p>
 </x-layout>

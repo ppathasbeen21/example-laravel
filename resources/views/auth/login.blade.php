@@ -12,6 +12,7 @@
                     E-mail
                 </label>
                 <input required type="email" class="form-control" name="email" id="email"
+                       value="{{ old('email') }}"
                        placeholder="E-mail">
                 @error('email')
                 <b class="text-danger">

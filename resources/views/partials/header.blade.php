@@ -26,13 +26,25 @@
             @guest()
                 <div class="hstack gap-2">
                     <a class="btn {{ request()->is('login') ? 'btn-info' : 'btn-primary' }}" href="/login">
-                        login
+                        Login
                     </a>
-                    <a class="btn {{ request()->is('register') ? 'btn-info' : 'btn-primary' }}" href="/register">
+                    <a class="btn {{ request()->is('register') ? 'btn-info' : 'btn-secondary' }}" href="/register">
                         Register
                     </a>
                 </div>
             @endguest
+            @auth()
+                <div class="hstack gap-2 gap-md-4">
+                    <b class="text-light">Bem vindo LOGADO</b>
+{{--                {{ $user['first_name'] }}--}}
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button class="text-danger btn">
+                            <b>Sair</b>
+                        </button>
+                    </form>
+                </div>
+            @endauth
         </div>
     </div>
 </header>

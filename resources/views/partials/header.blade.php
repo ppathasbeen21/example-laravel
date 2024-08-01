@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <header class="bg-dark">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
@@ -35,8 +36,11 @@
             @endguest
             @auth()
                 <div class="hstack gap-2 gap-md-4">
-                    <b class="text-light">Bem vindo LOGADO</b>
-{{--                {{ $user['first_name'] }}--}}
+                    @php
+                        $user = Auth::user();
+                        $firstName = $user->first_name;
+                    @endphp
+                    <b class="text-light">Bem vindo {{ $firstName }}</b>
                     <form action="/logout" method="POST">
                         @csrf
                         <button class="text-danger btn">

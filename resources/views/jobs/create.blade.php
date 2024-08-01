@@ -1,4 +1,5 @@
 <x-layout>
+    @auth
     <div class="bg-body-secondary">
         <h1>
             Create Job
@@ -33,4 +34,10 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    @endauth
+    @guest()
+        <div class="">
+            Voce não é admin
+        </div>
+    @endguest
 </x-layout>

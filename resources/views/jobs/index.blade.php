@@ -3,9 +3,11 @@
         <h1>
             Hello from Jobs page
         </h1>
+        @auth
         <a href="/jobs/create" class="btn btn-success">
             add New Job
         </a>
+        @endauth
     </div>
     <ul class="row gy-2 list-unstyled">
         @foreach($jobs as $job)

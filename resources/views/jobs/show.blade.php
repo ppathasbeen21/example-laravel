@@ -13,9 +13,9 @@
         This job pays <b class="text-success">R$ {{ $job['salary'] }}</b> per year.
     </p>
 
-    @auth
+    @can('edit', $job)
         <a href="/jobs/{{ $job->id }}/edit" class="btn btn-outline-warning mt-5">
             Edit Job
         </a>
-    @endauth
+    @endcan
 </x-layout>

@@ -10,21 +10,27 @@ use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $jobs = Job::with('employer')->latest()->paginate(12);
 
         return view('jobs.index', [
             'jobs' => $jobs
         ]);
     }
-    public function create(){
+
+    public function create()
+    {
         return view('jobs.create');
 
     }
-    public function show(Job $job){
+
+    public function show(Job $job)
+    {
         return view('jobs.show', ['job' => $job]);
 
     }
+
     public function store()
     {
         request()->validate([
@@ -41,19 +47,15 @@ class JobController extends Controller
         return redirect('/jobs');
 
     }
+
     public function edit(Job $job){
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
-
-        if ($job->employer->user->isNot(Auth::user())) {
-            abort(403, 'Empregado autorizado a executar a alteração é: ' . $job->employer->user->first_name );
-        }
-
         return view('jobs.edit', ['job' => $job]);
-
     }
-    public function update(Job $job){
+
+    public function update(Job $job)
+    {
+        Gate::authorize('edit', $job);
+
         request()->validate([
             'title' => ['required', 'min:3'],
             'salary' => ['required']
@@ -66,8 +68,10 @@ class JobController extends Controller
 
         return redirect('/jobs/' . $job->id);
     }
-    public function destroy(Job $job){
-        // authorize (On hold...)
+
+    public function destroy(Job $job)
+    {
+        Gate::authorize('edit', $job);
 
         $job->delete();
 
